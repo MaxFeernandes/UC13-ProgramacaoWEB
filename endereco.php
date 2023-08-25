@@ -1,49 +1,63 @@
 <?php
-    if(isset($_POST['cep']) && !empty($_POST['cep'])){
 
-        $cep = $_POST['cep'];
-        $resultado = file_get_contents("http://viacep.com.br/ws/$cep/json/");
+class Aluno {
+    // ... (same as before)
+}
 
-        $dadosEndereco = json_decode($resultado, true);
+class Livro {
+    // ... (same as before)
+}
 
-        //var_dump($dadosEndereco);
+class Emprestimo {
+    // ... (same as before)
+}
 
-    }else{
-        header("location:buscar-endereco.php");
-        exit;
-    }
+class Usuario {
+    // ... (same as before)
+}
+
+class Biblioteca {
+    // ... (same as before)
+}
+
+// Process form data
+$alunoData = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Extract and sanitize form data
+    $alunoData = htmlspecialchars($_POST['aluno']);
+}
+
 ?>
+
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Dados do CEP</title>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Sistema de biblioteca</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Sistema de Biblioteca</h1>
+    <form method="post">
+        <h3>Digite seu nome:</h3>
+        <input name="aluno" type="text" id="aluno">
+        <br>
+        <!-- Add other form fields here -->
+        <button type="submit">Enviar</button>
+    </form>
 
-    <h1>Endereço</h1>
-    <hr>
-    <p>CEP: <?php echo $dadosEndereco['cep'] ?></p>
-    <p>Rua: <?php echo $dadosEndereco['logradouro'] ?></p>
-    <p>Bairro: <?php echo $dadosEndereco['bairro'] ?></p>
-    <p>Cidade: <?php echo $dadosEndereco['localidade'] ?></p>
-    <p>Estado: <?php echo $dadosEndereco['uf'] ?></p>
-    
+    <?php
+    // Display submitted data
+    if (!empty($alunoData)) {
+        echo "<p>Nome do aluno: $alunoData</p>";
+        // Display other form fields similarly
+    }
+    ?>
 
-    <table border="2">
-        <tr>
-            <td>CEP</td>
-            <td>Rua</td>
-            <td>Bairro</td>
-            <td>Cidade</td>
-            <td>Estado</td>
-        </tr>
-        <tr>
-            <td><?php echo $dadosEndereco['cep'] ?></td>
-            <td><?php echo $dadosEndereco['logradouro'] ?></td>
-            <td><?php echo $dadosEndereco['bairro'] ?></td>
-            <td><?php echo $dadosEndereco['localidade'] ?></td>
-            <td><?php echo $dadosEndereco['uf'] ?></td>
-        </tr>
-    </table>
-    </body>
+    <p>
+        Copyright &copy; <?= date("d/m/Y H:i:s") ?> - Todos os direitos são reservados
+    </p>
+</body>
 </html>
