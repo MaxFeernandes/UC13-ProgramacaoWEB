@@ -81,6 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
+
+
 <body>
     <div class="form-container">
              <!-- Campos para preencher o formulário -->
@@ -91,23 +93,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="nome" name="nome" required><br>
             
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="email" placeholder="Example@example.com" required><br>
             
             <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" required><br>
+            <input type="tel" id="telefone" name="telefone" placeholder="0000-0000" required><br>
             
             <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" name="cpf" required><br>
+            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required><br>
             
             <label for="celular">Celular:</label>
-            <input type="tel" id="celular" name="celular" required><br>
+            <input type="tel" id="celular" name="celular" placeholder="(00)00000-0000" required><br>
             
             <label for="dataNascimento">Data de Nascimento:</label>
-            <input type="date" id="dataNascimento" name="dataNascimento" required><br>
+            <input type="date" id="dataNascimento" name="dataNascimento"  ="00/00/0000" required><br>
             
             <button type="submit">Cadastrar</button>
         </form>
     </div>
+
+
     <?php if($aluno): ?>
     <div class="form-container">
           <!-- Conteúdo do formulário aqui -->
